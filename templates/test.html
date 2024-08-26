@@ -1,0 +1,48 @@
+{% extends 'basepage.html' %}
+    <title>{% block title %}testing{% endblock %}</title>
+
+{% block content %}
+<section class="blog-posts grid-system">
+    <div class="container">
+        <div class="all-blog-posts">
+
+            <section class="blog-posts grid-system">
+              <div class="container">
+                <div class="all-blog-posts">
+                    <br>
+                  <h2 class="text-center">Featured Worker Areas</h2>
+                  <br>
+                  <div class="row">
+                    <!-- row 1 -->
+                    {% for area in areas %}
+                    <div class="col-md-3 col-sm-6">
+                      <div class="blog-post">
+                        <div class="blog-thumb">
+                          <a href=""><img src="{{area.img.url}}" style="width: 255px; height: 300px;" alt=""></a>
+                        </div>
+                        <div class="down-content">
+                          <span>Ads</span>
+                          <a href="jobs.html"><h4>{{area.areaName}}</h4></a>
+                          <div class="post-options">
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <ul class="post-tags">
+                                  <li><i class="fa fa-bullseye"></i></li>
+                                  <li><a href="job-details.html">View Job</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </section>
+
+
+
+        </div>
+    </div>
+</section>
+{% endblock %}

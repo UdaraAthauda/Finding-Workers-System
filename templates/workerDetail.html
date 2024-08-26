@@ -1,0 +1,46 @@
+{% extends 'basepage.html' %}
+    <title>{% block title %}Worker Detail form{% endblock %}</title>
+{% block content %}
+
+{% if confirm != None %}
+<br>
+<section class="blog-posts">
+    <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="all-blog-posts">
+            <h2 class="text-center mt-3">Add the worker details to the system</h2>
+
+            {% if successMsg == True %}
+            <div class="alert alert-success text-center mt-3" role="alert">
+                <strong>Your advertisement is successfully recorded, After get admin accept advertisement will display in the system.</strong>
+            </div>
+            {% endif %}
+
+            {% if messages %}
+            <div class="alert alert-danger text-center mt-3" role="alert">
+                {% for message in  messages %}
+                <strong>{{message}}</strong>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="col-md-6 mt-3" style="margin: 0 auto">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <br>
+                    <button type="submit" class="btn btn-success col-5" style="margin: 1rem auto 0 auto;display: block">submit details</button>
+                </form>
+                <hr class="border border-primary border-2 opacity-50">
+                <dl>
+                    <li>For select multiple working areas press <span class="btn btn-secondary btn-sm">Ctrl</span> button and select</li>
+                    <li>This advertisement will be display in the system after get accepted by an admin </li>
+                    <li>Please add an image of the worker</li>
+                </dl>
+                <hr class="border border-primary border-2 opacity-50">
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

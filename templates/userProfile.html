@@ -1,0 +1,58 @@
+{% extends 'basepage.html' %}
+    <title>{% block title %}User Profile{% endblock %}</title>
+
+{% block content %}
+
+<br>
+<section class="blog-posts">
+    <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="all-blog-posts">
+            <h2 class="text-center mt-3">User Profile</h2>
+
+            {% if messages %}
+            <div class="alert alert-danger text-center mt-3" role="alert">
+                {% for message in  messages %}
+                <strong>{{message}}</strong>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+            {% if errorFlag %}
+            <div class="alert alert-danger text-center mt-3" role="alert">
+                <strong>Do you need to permanently delete this profile?</strong>
+
+                <div class="text-center">
+                    <br>
+                    <a href="/deleteUser" class="btn btn-danger col-3 mr-2">yes, delete permanently</a>
+                    <a href="/userProfile" class="btn btn-success col-2">cancel</a>
+                </div>
+            </div>
+            {% endif %}
+
+
+            <div class="col-md-6 mt-3" style="margin: 0 auto">
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+
+                    <label class="form-label">User Name:</label>
+                    <input type="text" class="form-control" name="username" placeholder="{{userName}}"><br>
+
+                    <label class="">Contact Number:</label>
+                    <input type="text" class="form-control" name="contact" placeholder="0{{contact}}">
+                    <p class="text-center">After changing your contact number please login again!</p><br>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success col-4 mr-2">update</button>
+                        <a href="/changePassword" class="btn btn-primary col-4">change password</a>
+                    </div>
+                        <a href="/deleteMsg" class="btn btn-danger col-4" style="margin: 1rem auto 0 auto;display: block">delete your profile</a>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
